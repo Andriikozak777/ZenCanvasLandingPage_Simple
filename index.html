@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="pageTitle">Дзен-Холст: Главная страница</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Основные стили для тела страницы */
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #1a202c, #2d3748); /* Темный градиентный фон */
+            color: #e2e8f0; /* Светлый текст */
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 1.5rem; /* Отступы по краям */
+        }
+
+        /* Стили для контейнера содержимого */
+        .content-container {
+            background-color: rgba(45, 55, 72, 0.9); /* Полупрозрачный темный фон */
+            backdrop-filter: blur(8px); /* Эффект размытия */
+            -webkit-backdrop-filter: blur(8px);
+            border-radius: 1.5rem; /* Сильно скругленные углы */
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5); /* Большая тень */
+            padding: 2.5rem; /* Внутренние отступы */
+            max-width: 800px; /* Максимальная ширина */
+            text-align: center;
+            animation: fadeIn 1s ease-out; /* Анимация появления */
+            border: 1px solid rgba(100, 116, 139, 0.3); /* Тонкая рамка */
+        }
+
+        /* Анимация появления */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Стили для заголовка */
+        h1 {
+            font-size: 3.5rem; /* Большой размер шрифта */
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+            color: #63b3ed; /* Яркий синий цвет */
+            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); /* Тень для текста */
+        }
+
+        /* Стили для подзаголовков */
+        h2 {
+            font-size: 2.2rem;
+            font-weight: bold;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #81e6d9; /* Бирюзовый цвет */
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Стили для параграфов */
+        p {
+            font-size: 1.15rem;
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+            color: #cbd5e0; /* Более светлый серый */
+        }
+
+        /* Стили для списков */
+        ul {
+            list-style: none; /* Убираем стандартные маркеры */
+            padding: 0;
+            margin-bottom: 1.5rem;
+            text-align: left; /* Выравнивание по левому краю */
+            max-width: 600px; /* Ограничиваем ширину списка */
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        ul li {
+            font-size: 1.05rem;
+            margin-bottom: 0.7rem;
+            padding-left: 1.8rem; /* Отступ для кастомного маркера */
+            position: relative;
+            color: #a0aec0; /* Более темный серый */
+        }
+
+        ul li::before {
+            content: '✨'; /* Кастомный маркер */
+            position: absolute;
+            left: 0;
+            color: #f6e05e; /* Желтый цвет маркера */
+            font-size: 1.2rem;
+            line-height: 1;
+        }
+
+        /* Стили для кнопки "Играть" */
+        .play-button {
+            display: inline-block; /* Для применения отступов и теней */
+            background: linear-gradient(145deg, #4CAF50, #3e8e41); /* Зеленый градиент */
+            color: white;
+            padding: 1.5rem 4rem; /* Большие отступы */
+            border: none;
+            border-radius: 1rem; /* Скругленные углы */
+            font-size: 2rem; /* Очень большой шрифт */
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none; /* Убираем подчеркивание у ссылки */
+            transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4); /* Большая тень */
+            text-transform: uppercase; /* Все буквы заглавные */
+            letter-spacing: 0.1em; /* Увеличенный интервал между буквами */
+            margin-top: 2.5rem; /* Отступ сверху */
+        }
+
+        .play-button:hover {
+            background: linear-gradient(145deg, #3e8e41, #3182ce); /* Изменение градиента при наведении */
+            transform: translateY(-5px) scale(1.02); /* Небольшое поднятие и увеличение */
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5); /* Увеличение тени */
+        }
+
+        .play-button:active {
+            background: linear-gradient(145deg, #3182ce, #2b6cb0); /* Изменение градиента при нажатии */
+            transform: translateY(0) scale(1); /* Возвращение в исходное состояние */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Уменьшение тени */
+        }
+
+        /* Селектор языка */
+        .language-selector {
+            margin-bottom: 2rem;
+        }
+        .language-selector label {
+            font-size: 1.15rem;
+            margin-right: 0.8rem;
+            color: #cbd5e0;
+        }
+        .language-selector select {
+            background-color: #4a5568;
+            color: #e2e8f0;
+            border: 1px solid #63b3ed;
+            border-radius: 0.5rem;
+            padding: 0.5rem 1rem;
+            font-size: 1rem;
+            cursor: pointer;
+            outline: none;
+        }
+        .language-selector select:focus {
+            box-shadow: 0 0 0 3px rgba(99, 179, 237, 0.5);
+        }
+
+
+        /* Медиа-запросы для адаптации на мобильных устройствах */
+        @media (max-width: 768px) {
+            .content-container {
+                padding: 1.5rem;
+                border-radius: 1rem;
+            }
+            h1 {
+                font-size: 2.5rem;
+                margin-bottom: 1rem;
+            }
+            h2 {
+                font-size: 1.8rem;
+                margin-top: 1.5rem;
+                margin-bottom: 0.8rem;
+            }
+            p {
+                font-size: 1rem;
+                line-height: 1.6;
+            }
+            ul {
+                padding: 0 1rem; /* Добавляем горизонтальный отступ на мобильных */
+            }
+            ul li {
+                font-size: 0.95rem;
+                margin-bottom: 0.5rem;
+                padding-left: 1.5rem;
+            }
+            ul li::before {
+                font-size: 1rem;
+            }
+            .play-button {
+                padding: 1rem 2.5rem;
+                font-size: 1.5rem;
+                margin-top: 2rem;
+            }
+            .language-selector {
+                margin-bottom: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="content-container">
+        <div class="language-selector">
+            <label for="languageSelect" id="languageLabel">Язык:</label>
+            <select id="languageSelect">
+                <option value="ru">Русский</option>
+                <option value="uk">Українська</option>
+                <option value="en">English</option>
+            </select>
+        </div>
+
+        <h1 id="mainTitle">Добро пожаловать в Дзен-Холст!</h1>
+        <p id="introText">
+            <strong>Дзен-Холст</strong> — это ваш личный уголок спокойствия и творчества. Здесь вы можете погрузиться в мир медитативных визуальных эффектов и расслабляющих мелодий, создавая уникальные произведения искусства одним движением мыши или пальца.
+        </p>
+
+        <h2 id="featuresTitle">Что вас ждет в Дзен-Холсте?</h2>
+        <p id="modesIntroText">
+            Мы предлагаем несколько режимов игры, которые позволят вам исследовать разные аспекты интерактивного искусства и звука:
+        </p>
+        <ul id="gameModesList">
+            <li id="freePlayDesc">✨ <strong>Свободная игра:</strong> Полная свобода творчества! Двигайте мышью или пальцем по холсту, чтобы создавать потоки частиц, сопровождаемые фоновой расслабляющей мелодией. Идеально для свободного самовыражения и медитации.</li>
+            <li id="echoSphereDesc">✨ <strong>Эхо-сфера:</strong> Нажмите и удерживайте мышь или палец на холсте, чтобы создать звуковую сферу. Чем дольше вы держите, тем дольше звучит нота, а частицы разлетаются, создавая завораживающий визуальный эффект. Отпустите, чтобы остановить звук.</li>
+            <li id="melodyMazeDesc">✨ <strong>Мелодичный лабиринт:</strong> Откройте для себя музыкальное приключение! Проведите мышью или пальцем вдоль извилистой синей линии лабиринта, чтобы услышать уникальную, случайно генерируемую мелодию. Каждый раз лабиринт будет новым, предлагая свежий звуковой опыт.</li>
+        </ul>
+
+        <h2 id="settingsTitle">Возможности настройки:</h2>
+        <p id="settingsIntroText">
+            Настройте ваш опыт до мельчайших деталей, чтобы он идеально соответствовал вашему настроению:
+        </p>
+        <ul id="settingsList">
+            <li id="visualSettingsDesc">✨ <strong>Визуальные эффекты:</strong> Изменяйте размер, скорость, количество и время жизни частиц. Выбирайте различные формы (круги, квадраты, треугольники) и типы движения (случайное, спираль, волна).</li>
+            <li id="soundSettingsDesc">✨ <strong>Звуковые эффекты:</strong> Экспериментируйте с различными музыкальными инструментами для фоновой мелодии и интерактивных звуков.</li>
+            <li id="tempoVolumeDesc">✨ <strong>Темп и громкость: Настройте темп фоновой музыки и общую громкость.</strong></li>
+            <li id="colorPaletteSettingsDesc">✨ <strong>Палитры цветов:</strong> Выбирайте из динамических, теплых, холодных, пастельных или ярких цветовых палитр.</li>
+            <li id="themeLanguageDesc">✨ <strong>Тема и язык:</strong> Переключайтесь между темной и светлой темой, а также выбирайте язык интерфейса (русский, украинский, английский).</li>
+        </ul>
+
+        <p id="callToActionText">
+            Готовы погрузиться в мир творчества и релаксации? Нажмите кнопку "Играть" и начните свое дзен-путешествие прямо сейчас!
+        </p>
+
+        <a href="https://andriikozak777.github.io/zen-canvas-app/" target="_blank" class="play-button" id="playButton">
+            Играть
+        </a>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
